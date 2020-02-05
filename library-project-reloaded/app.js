@@ -81,7 +81,6 @@ passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username })
       .then(userDocument => {
-        console.log(userDocument);
         if (!userDocument) {
           done(null, false, { message: "Incorrect credentials" });
           return;
@@ -105,7 +104,7 @@ const GithubStrategy = require("passport-github").Strategy;
 passport.use(
   new GithubStrategy(
     {
-      clientId: process.env.GITHUB_CLIENT_ID,
+      clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: "http://localhost:3000/github/callback"
     },
